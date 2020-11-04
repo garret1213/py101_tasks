@@ -13,6 +13,19 @@
 
 Тебе может понадобится модуль random, цикл while и ветвления
 """
-
-if __name__ == '__main__':
-    pass
+from random import randint
+random_number = randint(1, 1_000_000)
+user_number = (input('Здравствуйте! \n Попробуйте угадать загаданное компьютером число, находящееся в промежутке от 1 до 1000000 \n Введите число:'))
+if (user_number) == random_number:
+    print("Поздравляю! Вы угадали!")
+if user_number.isdigit():
+    if (0 >= int(user_number) <= 1_000_001):
+        print("К сожалению это число не входит в промежуток.\nПожалуйста выберете число находящееся в промежутке от 1 до 1000000")
+    elif int(user_number) > random_number:
+        print('Число '+ str(user_number) + ',больше загаданного компьютером')
+    elif random_number > int(user_number):
+        print('Число '+ str(user_number) + ',меньше загаданного компьютером')
+elif user_number == "exit":
+    quit()
+elif user_number.isdigit() == False: 
+    print('Вы ввели не число =/')
