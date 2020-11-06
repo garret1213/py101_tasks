@@ -14,3 +14,5 @@ for number in range(1, 101):
         print('zap')
     elif number % 3 == 0:
         print('zip')
+    else:
+        print(number)
