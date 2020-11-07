@@ -28,4 +28,4 @@ if user_number.isdigit():
 elif user_number == "exit":
     quit()
 elif user_number.isdigit() == False: 
-    print('Вы ввели не число =/')
+    print('Вы ввели не число')

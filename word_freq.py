@@ -7,6 +7,30 @@
 
 Тебе может понадобится модуль os, модуль argparse, цикл и словарь
 """
+import argparse
+import os
+from nltk.corpus import stopwords
 
-if __name__ == '__main__':
-    pass
+parser = argparse.ArgumentParser()
+parser.add_argument("path", type=str,
+                    help="specify path in the following way: \"C:\\\"")
+
+args = parser.parse_args()
+path = args.path
+
+fileObject = open(path, "r")
+text = fileObject.read()
+
+stopwords = set(nltk.corpus.stopwords.words('english'))
+
+words = text.split()
+words = [word for word in words if len(word) > 1]
+words = [word for word in words if not word.isnumeric()]
+words = [word.lower() for word in words]
+words = [word for word in words if word not in stopwords]
+word_freq = []
+
+fdist = nltk.FreqDist(words)
+
+for word, frequency in fdist.most_common(100):
+    print(u'{};{}'.format(word, frequency))
